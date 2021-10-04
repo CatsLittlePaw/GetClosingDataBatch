@@ -19,15 +19,23 @@ namespace ShioajiConsole
 
         static void Main(string[] args)
         {
-            log.Debug("排程「當天收盤資訊」 開始執行");
+            try
+            {
+                log.Debug("排程「當天收盤資訊」 開始執行");
 
-            
-            MyApi ma = new MyApi();
-            ma.Login();
-            log.Debug("Shioaji 登入成功");
-            ma.getTodayClosingData();
-            
-            log.Debug("排程「當天收盤資訊」 執行完畢");
+                MyApi ma = new MyApi();
+                ma.Login();
+                log.Debug("Shioaji 登入成功");
+                ma.getTodayClosingData();
+            }
+            catch (Exception ex)
+            {
+                // Do something
+            }
+            finally
+            {
+                log.Debug("排程「當天收盤資訊」 執行完畢");
+            }                   
         }
     }
 
