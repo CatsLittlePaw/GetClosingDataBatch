@@ -31,6 +31,7 @@ namespace ShioajiConsole
             catch (Exception ex)
             {
                 // Do something
+                log.Error(ex.ToString());
             }
             finally
             {
@@ -56,12 +57,13 @@ namespace ShioajiConsole
             
             for(var i = 0; i < stockCodeList.Length; ++i)
             {
-                var contract = _api.Contracts.Stocks[type][stockCodeList[i]];                
-                Ticks ticks = _api.Ticks(contract, DateTime.Now.ToString("yyyy-MM-dd"));
+                var contract = _api.Contracts.Stocks[type][stockCodeList[i]];
+                string today = DateTime.Now.ToString("yyyy-MM-dd");
+                Ticks ticks = _api.Ticks(contract, today);
                 
                 
                 ClosingData data = new ClosingData();
-                data.SetProperties(stockCodeList[i] , ticks.ts[0].ToString(), ticks.volume[0].ToString(), ticks.close[0].ToString(), ticks.bid_price[0].ToString(), ticks.bid_volume[0].ToString(), ticks.ask_price[0].ToString(), ticks.ask_volume[0].ToString());
+                data.SetProperties(stockCodeList[i] , today, ticks.ts[0].ToString(), ticks.volume[0].ToString(), ticks.close[0].ToString(), ticks.bid_price[0].ToString(), ticks.bid_volume[0].ToString(), ticks.ask_price[0].ToString(), ticks.ask_volume[0].ToString());
                 ADODB.Insert<ClosingData>(data);                
             }
         }

@@ -7,6 +7,7 @@ namespace DataTemplate
     public class ClosingData
     {
         public string STOCK_CODE { get; set; }
+        public string DATE { get; set; }
         public string TS { get; set; }
         public string VOLUME { get; set; }
         public string CLOSE_PRICE { get; set; }
@@ -15,9 +16,10 @@ namespace DataTemplate
         public string ASK_PRICE { get; set; }
         public string ASK_VOLUME { get; set; }
 
-        public void SetProperties(string code, string ts, string volume, string close, string bid_price, string bid_volume, string ask_price, string ask_volume)
+        public void SetProperties(string code, string date, string ts, string volume, string close, string bid_price, string bid_volume, string ask_price, string ask_volume)
         {
             this.STOCK_CODE = code;
+            this.DATE = date;
             this.TS = ts;
             this.VOLUME = volume;
             this.CLOSE_PRICE = close;
