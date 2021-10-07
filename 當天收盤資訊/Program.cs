@@ -42,8 +42,8 @@ namespace ShioajiConsole
 
     public class MyApi
     {
-        private static Shioaji _api = new Shioaji();
-        private static SJList _accounts;
+        private Shioaji _api = new Shioaji();
+        private SJList _accounts;
         public void Login()
         {
             string personal_id = ConfigurationManager.AppSettings["account"].ToString();
